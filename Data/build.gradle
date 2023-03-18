@@ -1,0 +1,19 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
+}
+
+apply from: "../gradle/common-library-build.gradle"
+
+android {
+    namespace 'dev.libatorium.pushcompose.data'
+}
+
+dependencies {
+    implementation project(":Common")
+
+    testImplementation project(":Common")
+    androidTestImplementation project(":Common")
+}

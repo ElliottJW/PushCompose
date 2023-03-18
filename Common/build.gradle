@@ -1,0 +1,27 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
+}
+
+apply from: "../gradle/common-library-build.gradle"
+
+android {
+    namespace 'dev.libatorium.pushcompose.common'
+}
+
+dependencies {
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+
+    api 'androidx.core:core-ktx:1.9.0'
+    api 'com.google.android.material:material:1.8.0'
+    api 'androidx.test.ext:junit-ktx:1.1.5'
+
+    testImplementation 'androidx.test.ext:junit-ktx:1.1.5'
+    testImplementation 'junit:junit:4.13.2'
+
+    androidTestImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
