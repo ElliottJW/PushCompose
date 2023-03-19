@@ -1,5 +1,8 @@
 package dev.libatorium.pushcompose.repositories
 
-interface HomeRepository {
+import dev.libatorium.pushcompose.data.model.Message
+import kotlinx.coroutines.flow.Flow
 
+interface HomeRepository {
+    val allMessagesFlow: Flow<List<Message>>
 }
