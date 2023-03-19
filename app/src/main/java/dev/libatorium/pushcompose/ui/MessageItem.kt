@@ -3,7 +3,7 @@ package dev.libatorium.pushcompose.ui
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,7 +13,7 @@ import dev.libatorium.pushcompose.data.model.Message
 
 @Composable
 fun MessageItem(message: Message) {
-    OutlinedCard(Modifier.fillMaxWidth()) {
+    ElevatedCard(Modifier.fillMaxWidth()) {
         Row(Modifier.padding(16.dp)) {
             Text(text = message.text)
         }
