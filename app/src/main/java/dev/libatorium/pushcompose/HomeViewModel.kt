@@ -18,11 +18,14 @@ class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ) : ViewModel() {
 
-    val messagesListFlow: StateFlow<SnapshotStateList<Message>> = homeRepository.allMessagesFlow
-        .map { it.toMutableStateList() }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(),
-            initialValue = SnapshotStateList()
-        )
+    val messagesListFlow: StateFlow<SnapshotStateList<Message>> =
+        homeRepository.allMessagesFlow
+            .map {
+                it.toMutableStateList()
+            }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(),
+                initialValue = SnapshotStateList()
+            )
 }
