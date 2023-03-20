@@ -1,3 +1,6 @@
 package dev.libatorium.pushcompose.data.model
 
-data class Message(val text: String)
+data class Message(
+    val title: String,
+    val body: String = ""
+)

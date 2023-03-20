@@ -15,7 +15,7 @@ import dev.libatorium.pushcompose.data.model.Message
 fun MessageItem(message: Message) {
     ElevatedCard(Modifier.fillMaxWidth()) {
         Row(Modifier.padding(16.dp)) {
-            Text(text = message.text)
+            Text(text = message.title)
         }
     }
 }

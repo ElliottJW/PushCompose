@@ -1,25 +1,23 @@
 package dev.libatorium.pushcompose.data.source
 
-import dev.libatorium.pushcompose.common.IoDispatcher
+import dev.libatorium.pushcompose.common.ApplicationScope
 import dev.libatorium.pushcompose.data.model.Message
 import javax.inject.Inject
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
 class IncomingMessageDataSourceImpl @Inject constructor(
-    @IoDispatcher private val dispatcher: CoroutineDispatcher
+    @ApplicationScope private val externalScope: CoroutineScope
 ) : IncomingMessageDataSource {
-    override val messageFlow: Flow<Message>
-        get() {
-            val msgs = (1..10).map { Message("$it") }.toTypedArray()
-            return flowOf(*msgs).onEach { delay(1000L) }.flowOn(dispatcher)
-        }
 
-    override fun onMessageReceived() {
-        TODO("Not yet implemented")
+    override val messageFlow: StateFlow<Message> =
+        MutableStateFlow(Message("Flow Starting Message"))
+
+    override fun onNewMessage(message: Message) {
+        externalScope.launch {
+            (messageFlow as MutableStateFlow).emit(message)
+        }
     }
 }

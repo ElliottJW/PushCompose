@@ -16,6 +16,8 @@ dependencies {
 
     implementation "androidx.room:room-ktx:2.5.0"
     implementation "androidx.work:work-runtime-ktx:2.8.0"
+    implementation platform(FIREBASE_BOM)
+    implementation FIREBASE_MESSAGING
 
     testImplementation project(":Common")
     androidTestImplementation project(":Common")

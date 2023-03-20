@@ -1,4 +1,16 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.15'
+    }
+    ext {
+        VERSION_FIREBASE_BOM = '31.2.3'
+
+        FIREBASE_BOM = "com.google.firebase:firebase-bom:$VERSION_FIREBASE_BOM"
+        FIREBASE_MESSAGING = 'com.google.firebase:firebase-messaging-ktx'
+    }
+}
+
 plugins {
     id 'com.android.application' version '7.4.0' apply false
     id 'com.android.library' version '7.4.0' apply false
