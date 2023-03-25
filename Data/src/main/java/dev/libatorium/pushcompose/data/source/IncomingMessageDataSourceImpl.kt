@@ -3,11 +3,13 @@ package dev.libatorium.pushcompose.data.source
 import dev.libatorium.pushcompose.common.ApplicationScope
 import dev.libatorium.pushcompose.data.model.Message
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
+@Singleton
 class IncomingMessageDataSourceImpl @Inject constructor(
     @ApplicationScope private val externalScope: CoroutineScope
 ) : IncomingMessageDataSource {

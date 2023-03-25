@@ -8,12 +8,14 @@ import dagger.hilt.components.SingletonComponent
 import dev.libatorium.pushcompose.data.source.IncomingMessageDataSource
 import dev.libatorium.pushcompose.data.source.IncomingMessageDataSourceImpl
 import dev.libatorium.pushcompose.data.source.PushComposeFirebaseMessagingService
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class DataModuleBindings {
 
     @Binds
+    @Singleton
     abstract fun bindIncomingMessageDataSource(
         incomingMessageDataSourceImpl: IncomingMessageDataSourceImpl
     ): IncomingMessageDataSource
@@ -24,5 +26,6 @@ abstract class DataModuleBindings {
 object DataModuleProvisions {
 
     @Provides
+    @Singleton
     fun provideFirebaseMessagingService() = PushComposeFirebaseMessagingService()
 }
